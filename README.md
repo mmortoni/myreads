@@ -11,7 +11,7 @@ Para executar este aplicativo, voc� precisar� do seguinte:
 ### In�cio
 
 1. Clone este reposit�rio: `git clone https://github.com/mmortoni/myreads.git`
-2. Mover para a pasta: `cd My-Reads`.<br />
+2. Mover para a pasta: `cd myreads`.<br />
 
 Para executar:
 
