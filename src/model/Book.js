@@ -3,18 +3,19 @@ import { PropTypes } from 'prop-types'
 
 const Book = (props) => {
     const { book, moveToShelf, showModal } = props
-
+    
     return (
         <li>
             <div className="book">
                 <div className="book-top">
-                    <div onClick={() => showModal(book.id)} 
-                        className="book-cover" 
-                        style={ { width: 128, height: 193,backgroundImage: `url(${ book.imageLinks ? book.imageLinks.thumbnail : process.env.PUBLIC_URL + "/blank.jpg" })` } }>
+                    <div onClick={() => showModal(book.id)}
+                        className="book-cover"
+                        title="clique - ver descrição do livro"
+                        style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : process.env.PUBLIC_URL + "/blank.jpg"})` }}>
                     </div>
-                
+
                     <div className="book-shelf-changer">
-                        <select onChange={(e) => { moveToShelf(book, e.target.value); }} defaultValue={book.shelf}>
+                        <select onChange={(e) => { moveToShelf(book, e.target.value); }} defaultValue={book.hasOwnProperty('shelf') ? book.shelf : 'none'}>
                             <option value="none" disabled>Move to shelf...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>

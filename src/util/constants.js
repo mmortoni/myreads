@@ -6,12 +6,12 @@ module.exports = Object.freeze({
         height: '600px',
         marginTop: '-300px',
         marginLeft: '-35%',
-    },    
+    },
     SHELVES: [
         {
             id: 1,
-            code: 'read',
-            description: 'Read'
+            code: 'currentlyReading',
+            description: 'Reading'
         },
         {
             id: 2,
@@ -20,8 +20,8 @@ module.exports = Object.freeze({
         },
         {
             id: 3,
-            code: 'currentlyReading',
-            description: 'Reading'
+            code: 'read',
+            description: 'Read'
         }
     ]
-  });
+});

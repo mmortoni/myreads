@@ -13,15 +13,20 @@ import BookInfoModal from '../templates/Templates'
 import Loader from '../components/GridLoader'
 
 class Searchpage extends React.Component {
+  state = {
+    query: '',
+    searchLoading: false,
+    results: [],
+    selected: {},
+  }
+
   constructor(props) {
     super(props)
 
-    this.state = {
-      query: '',
-      searchLoading: false,
-      results: [],
-      selected: {}
-    }
+    this.updateQuery = this.updateQuery.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.search = this.search.bind(this);
+    this.findBookWithShelves = this.findBookWithShelves.bind(this);
   }
 
   updateQuery = (query) => {
@@ -47,11 +52,23 @@ class Searchpage extends React.Component {
     })
 
     BooksAPI.search(query, maxResults).then(results => {
+      results = (results.hasOwnProperty('error')) ?
+        [] : this.mapResult(results, this.findBookWithShelves);
+
       this.setState({
         searchLoading: false,
         results: results
       })
     })
+  }
+
+  mapResult(results, checker) {
+    return results.map(checker);
+  }
+
+  findBookWithShelves(book) {
+    let bookFound = this.props.booksOnShelves.find((bookOnshelf) => (book.id === bookOnshelf.id));
+    return (bookFound !== undefined) ? bookFound : book;
   }
 
   render() {
@@ -62,7 +79,7 @@ class Searchpage extends React.Component {
     if (Object.prototype.toString.call(results) === '[object Array]') {
       books = results.map((book) => {
         return (
-          <Book key={ book.id } book={ book } moveToShelf={ this.props.moveToShelf } showModal={ this.showModal } />
+          <Book key={book.id} book={book} moveToShelf={this.props.moveToShelf} showModal={this.showModal} />
         )
       })
     }
@@ -74,22 +91,22 @@ class Searchpage extends React.Component {
 
           <div className="search-books-input-wrapper">
             <Debounce time="500" handler="onChange">
-              <input type="text" placeholder="Search by title or author" onChange={ (e) => this.updateQuery(e.target.value) } />
+              <input type="text" placeholder="Search by title or author" onChange={(e) => this.updateQuery(e.target.value)} />
             </Debounce>
           </div>
         </div>
 
         <div className="search-books-results">
-          <Loader loading={ searchLoading } color="#2e7c31" size="16px" margin="4px" className="loader" />
-          <div className="loader">{ (Object.prototype.toString.call(results) === '[object Array]') ? `Showing ${ books.length } results` : '' }<br /><br /></div>
-          <div className="loader">{ (Object.prototype.toString.call(results) === '[object Object]') ? `No results` : '' }<br /><br /></div>
+          <Loader loading={searchLoading} color="#2e7c31" size="16px" margin="4px" className="loader" />
+          <div className="loader">{(Object.prototype.toString.call(results) === '[object Array]') ? `Showing ${books.length} results` : ''}<br /><br /></div>
+          <div className="loader">{(Object.prototype.toString.call(results) === '[object Object]') ? `No results` : ''}<br /><br /></div>
           <ol className="books-grid">
-            { books }
+            {books}
           </ol>
         </div>
 
-        <SkyLight dialogStyles={ ConstantsList.BIGGREENDIALOG } hideOnOverlayClicked ref={ ref => this.animated = ref }>
-          <BookInfoModal selected={ selected } />
+        <SkyLight dialogStyles={ConstantsList.BIGGREENDIALOG} hideOnOverlayClicked ref={ref => this.animated = ref}>
+          <BookInfoModal selected={selected} />
         </SkyLight>
       </div>
     )
@@ -97,7 +114,8 @@ class Searchpage extends React.Component {
 }
 
 Searchpage.propTypes = {
-  moveToShelf: PropTypes.func.isRequired
+  moveToShelf: PropTypes.func.isRequired,
+  booksOnShelves: PropTypes.array.isRequired
 }
 
 export default Searchpage

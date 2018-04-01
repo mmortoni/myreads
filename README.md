@@ -1,16 +1,16 @@
 ## Projeto My Reads
 
-### Pré-requisitos
+### Prï¿½-requisitos
 
-Para executar este aplicativo, você precisará do seguinte:
+Para executar este aplicativo, vocï¿½ precisarï¿½ do seguinte:
 
 * Node.js
 * Linha de comando (Windows: cmd / Mac: terminal)
 * YARN ou NPM
 
-### Início
+### Inï¿½cio
 
-1. Clone este repositório: `git clone https://github.com/mmortoni/My-Reads.git`
+1. Clone este repositï¿½rio: `git clone https://github.com/mmortoni/myreads.git`
 2. Mover para a pasta: `cd My-Reads`.<br />
 
 Para executar:
@@ -27,19 +27,23 @@ npm start
 
 ##### Abrir  http://localhost:3000/
 
+## Testes
+O aplicativo tem um conjunto de testes escrito em Jest & Enzyme, que pode ser executado
+com ```yarn test``` ou ```npm test```. 
+
 ##### Funcionalidades:
 
-###### Página Principal
+###### Pï¿½gina Principal
 
 ![Estante de livros](public/bookshelf.png?raw=true "Estante de livros")
 
 ###### Routing      
-- [x] A página principal conecta-se à página de busca.
-- [x] A página de busca conecta-se de volta à página principal.
+- [x] A pï¿½gina principal conecta-se ï¿½ pï¿½gina de busca.
+- [x] A pï¿½gina de busca conecta-se de volta ï¿½ pï¿½gina principal.
 
 ![Routing](public/routing.png?raw=true "Routing")
 
 ###### Extras
-- [x] Modal de informações sobre o livro na Estante ou na Pesquisa - clicar na imagem do livro
+- [x] Modal de informaï¿½ï¿½es sobre o livro na Estante ou na Pesquisa - clicar na imagem do livro
 - [x] Link Google Books
 - [x] <a href="https://github.com/yuanyan/halogen" target="_blank">Halogen</a> usado para mostrar o indicador de carregamento.
