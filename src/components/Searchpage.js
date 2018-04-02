@@ -7,7 +7,7 @@ import SkyLight from 'react-skylight'
 
 //Components 
 import * as BooksAPI from '../api/BooksAPI'
-import Book from '../model/Book'
+import Book from './Book'
 import ConstantsList from '../util/constants'
 import BookInfoModal from '../templates/Templates'
 import Loader from '../components/GridLoader'
@@ -34,6 +34,8 @@ class Searchpage extends React.Component {
       () => {
         if (query.length > 0) {
           this.search(this.state.query, 40)
+        } else {
+          this.setState({ results: [] })
         }
       })
   }

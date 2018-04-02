@@ -15,12 +15,12 @@ const Book = (props) => {
                     </div>
 
                     <div className="book-shelf-changer">
-                        <select onChange={(e) => { moveToShelf(book, e.target.value); }} defaultValue={book.hasOwnProperty('shelf') ? book.shelf : 'none'}>
+                        <select onChange={(e) => { moveToShelf(book, e.target.value); }} defaultValue={book.hasOwnProperty('shelf') ? book.shelf : 'None'}>
                             <option value="none" disabled>Move to shelf...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
-                            <option value="none">None</option>
+                            <option value="None">None</option>
                         </select>
                     </div>
                 </div>

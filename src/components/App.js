@@ -7,7 +7,7 @@ import SkyLight from 'react-skylight'
 //Components
 import * as BooksAPI from '../api/BooksAPI'
 import Searchpage from './Searchpage'
-import BookShelf from '../model/BookShelf'
+import BookShelf from './BookShelf'
 import ConstantsList from '../util/constants'
 import BookInfoModal from '../templates/Templates'
 
