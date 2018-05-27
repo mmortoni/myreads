@@ -1,5 +1,9 @@
 ## Projeto My Reads
 
+# Destinos de viagens
+
+Um aplicativo simples para acompanhar os destinos que eu gostaria de visitar.
+
 ### Pré-requisitos
 
 Para executar este aplicativo, você precisará do seguinte:
